@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quản trị – ChangSpaBeauTy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+<!-- Dùng chung màu sắc, font và chế độ tối với trang chủ (chang-spa-beauty-css.css), rồi mới đến CSS riêng của trang quản trị -->
+<link rel="stylesheet" href="chang-spa-beauty-css.css">
+<link rel="stylesheet" href="dashboard.css">
+
+</head>
+
+<body>
+
+<div class="adm-app" id="app" hidden>
+
+    <aside class="adm-side">
+        <h2 class="adm-brand">✦ ChangSpaBeauTy</h2>
+        <p class="adm-sub">Trang quản trị</p>
+        <a class="on" href="#" aria-current="page">📦 Sản phẩm</a>
+        <button type="button" id="logout-btn">🚪 Đăng xuất</button>
+    </aside>
+
+    <main class="adm-main">
+        <div class="adm-top">
+            <h1>Quản lý sản phẩm</h1>
+            <button class="adm-btn" type="button" id="add-btn">+ Thêm sản phẩm</button>
+        </div>
+
+        <div class="adm-stats">
+            <div class="adm-stat"><span>Tổng sản phẩm</span><b id="stat-total">0</b></div>
+            <div class="adm-stat"><span>Danh mục</span><b id="stat-cats">0</b></div>
+            <div class="adm-stat"><span>Tổng lượt bán</span><b id="stat-sold">0</b></div>
+            <div class="adm-stat"><span>Đánh giá trung bình</span><b id="stat-rating">0</b></div>
+        </div>
+
+        <div class="adm-tools">
+            <input id="search" type="search" placeholder="Tìm theo tên sản phẩm…" aria-label="Tìm sản phẩm">
+            <select id="cat-filter" aria-label="Lọc theo danh mục"></select>
+        </div>
+
+        <div class="adm-table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Ảnh</th><th>Tên sản phẩm</th><th>Danh mục</th><th>Giá</th><th>Đã bán</th><th>Đánh giá</th><th>Nhãn</th><th>Thao tác</th></tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+            <div class="adm-empty" id="empty" hidden>
+                <p id="empty-text"></p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Hộp thoại thêm / sửa sản phẩm -->
+<dialog id="product-dialog" aria-labelledby="dialog-title">
+    <form class="adm-form" id="product-form" novalidate>
+        <h2 id="dialog-title">Thêm sản phẩm</h2>
+
+        <label for="f-category">Danh mục</label>
+        <input id="f-category" list="cat-list" required maxlength="50">
+        <datalist id="cat-list"></datalist>
+
+        <label for="f-name">Tên sản phẩm</label>
+        <input id="f-name" required maxlength="100">
+
+        <div class="adm-row">
+            <div>
+                <label for="f-price">Giá (đ)</label>
+                <input id="f-price" type="number" min="0" step="any" required>
+            </div>
+            <div>
+                <label for="f-sold">Đã bán</label>
+                <input id="f-sold" type="number" min="0" step="1">
+            </div>
+        </div>
+
+        <div class="adm-row">
+            <div>
+                <label for="f-rating">Đánh giá (0 – 5)</label>
+                <input id="f-rating" type="number" min="0" max="5" step="any">
+            </div>
+            <div>
+                <label for="f-badge">Nhãn trên thẻ (không bắt buộc)</label>
+                <input id="f-badge" maxlength="12" placeholder="-20%, Mới, Hot…">
+            </div>
+        </div>
+
+        <label for="f-badgeclass">Màu nhãn</label>
+        <select id="f-badgeclass">
+            <option value="">Hồng (mặc định)</option>
+            <option value="new">Xanh lá (Mới)</option>
+            <option value="hot">Hồng đậm (Hot)</option>
+        </select>
+
+        <label for="f-image-file">Ảnh sản phẩm</label>
+        <div class="adm-upload">
+            <div class="adm-preview" id="image-preview"></div>
+            <div>
+                <input id="f-image-file" type="file" accept="image/*">
+                <button class="adm-btn light small" type="button" id="remove-image">Xóa ảnh</button>
+            </div>
+        </div>
+
+        <div class="adm-dialog-actions">
+            <p class="adm-error" id="form-error" role="alert"></p>
+            <div class="adm-buttons">
+                <button class="adm-btn light" type="button" id="cancel-btn">Hủy</button>
+                <button class="adm-btn" type="submit">Lưu</button>
+            </div>
+        </div>
+    </form>
+</dialog>
+
+<!-- Dùng lại khung thông báo của trang chủ -->
+<div class="system-toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

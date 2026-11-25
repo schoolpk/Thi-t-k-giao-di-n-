@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ChangSpaBeauTy – Mỹ phẩm 3D</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+<link rel="stylesheet" href="chang-spa-beauty-css.css">
+</head>
+<body>
+<div class="ad">🎉 Miễn phí vận chuyển · Thanh toán khi nhận hàng (COD)</div>
+<header>
+  <div><h1 class="brand">✦ ChangSpaBeauTy ✦</h1><p class="tag-line">Chăm sóc vẻ đẹp tự nhiên · Thuần chất từ thiên nhiên</p></div>
+</header>
+<nav><div class="pill">
+  <a class="on" href="#">Trang chủ</a><a href="#sp">Sản phẩm</a><a href="#cam">Cam kết</a><a href="#lh">Liên hệ</a>
+  <div class="auth-actions" aria-label="Tài khoản">
+    <button class="auth-button login-button" id="open-login" type="button">Đăng nhập</button>
+    <button class="auth-button register-button" id="open-register" type="button">Đăng ký</button>
+  </div>
+  <input id="q" type="search" placeholder="Tìm sản phẩm, thương hiệu…" aria-label="Tìm sản phẩm">
+</div></nav>
+<div class="container">
+  <aside class="sidebar-left"><h3>Danh mục</h3><div id="cats"></div></aside>
+  <main id="sp">
+    <h2>Sản phẩm nổi bật</h2>
+    <p class="mu">Di chuột vào thẻ để lật xem thông tin (điện thoại: chạm để lật). Bàn phím: Tab chọn thẻ, Enter để lật, Esc để lật lại.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="grid" id="grid"></div>
+  </main>
+  <aside class="sidebar-right" id="cam">
+    <h3>Cam kết</h3>
+    <p>🚚 Giao hàng toàn quốc</p><p>✅ Hàng chính hãng 100%</p><p>🔄 Đổi trả trong 7 ngày</p><p>💵 Thanh toán khi nhận hàng (COD)</p>
+  </aside>
+</div>
+<footer id="lh">
+  <div class="fi">
+    <div><b>✦ ChangSpaBeauTy</b>Sản phẩm làm đẹp cao cấp từ thiên nhiên,<br>an toàn cho mọi loại da.</div>
+    <div><b>Liên hệ</b>📍 Hà Nội, Việt Nam<br>📞 0123 456 789<br>✉️ hello@changspa.vn<br>🕗 8:00 – 21:00 mỗi ngày</div>
+  </div>
+  <div class="fb">© 2026 ChangSpaBeauTy · Tất cả quyền được bảo lưu · Dữ liệu sản phẩm là dữ liệu mẫu</div>
+</footer>
+  <div class="auth-overlay" id="auth-overlay" aria-hidden="true">
+    <section class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <button class="auth-close" id="auth-close" type="button" aria-label="Đóng">×</button>
+      <div class="auth-tabs" role="tablist" aria-label="Tài khoản">
+        <button class="auth-tab active" id="login-tab" type="button" role="tab" aria-selected="true">Đăng nhập</button>
+        <button class="auth-tab" id="register-tab" type="button" role="tab" aria-selected="false">Đăng ký</button>
+      </div>
+
+      <form class="auth-form active" id="login-form">
+        <p class="auth-kicker">CHÀO MỪNG TRỞ LẠI</p>
+        <h2 id="auth-title">Đăng nhập tài khoản</h2>
+        <label for="login-email">Email</label>
+        <input id="login-email" name="email" type="email" placeholder="name@example.com" required>
+        <label for="login-password">Mật khẩu</label>
+        <input id="login-password" name="password" type="password" placeholder="Nhập mật khẩu" minlength="5" required>
+        <button class="auth-submit" type="submit">Đăng nhập <span>→</span></button>
+        <p class="auth-switch">Chưa có tài khoản? <button id="switch-register" type="button">Đăng ký ngay</button></p>
+      </form>
+
+      <form class="auth-form" id="register-form">
+        <p class="auth-kicker">TẠO TÀI KHOẢN MỚI</p>
+        <h2>Đăng ký thành viên</h2>
+        <label for="register-name">Họ và tên</label>
+        <input id="register-name" name="name" type="text" placeholder="Nhập họ và tên" required>
+        <label for="register-email">Email</label>
+        <input id="register-email" name="email" type="email" placeholder="name@example.com" required>
+        <label for="register-password">Mật khẩu</label>
+        <input id="register-password" name="password" type="password" placeholder="Ít nhất 6 ký tự" minlength="6" required>
+        <label for="register-confirm">Xác nhận mật khẩu</label>
+        <input id="register-confirm" name="confirmPassword" type="password" placeholder="Nhập lại mật khẩu" minlength="6" required>
+        <button class="auth-submit" type="submit">Tạo tài khoản <span>→</span></button>
+        <p class="auth-switch">Đã có tài khoản? <button id="switch-login" type="button">Đăng nhập</button></p>
+      </form>
+    </section>
+  </div>
+  <div class="system-toast" id="system-toast" role="status" aria-live="polite"></div>
+  <script src="chang-spa-beauty-js.js"></script>
+</body>
+</html>
